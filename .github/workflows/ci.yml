@@ -21,12 +21,11 @@ jobs:
           godot_executable_download_url: https://github.com/godotengine/godot/releases/download/3.5.1-stable/Godot_v3.5.1-stable_linux_headless.64.zip
           godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/3.5.1-stable/Godot_v3.5.1-stable_export_templates.tpz
           relative_project_path: ./
-          archive_output: true
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: web
-          path: ${{ steps.build.outputs.archive_directory }}/${{ env.EXPORT_NAME }}.zip
+          path: ${{ steps.build.outputs.build_directory }}
       # Upload to itch.io
       - uses: manleydev/butler-publish-itchio-action@master
         env:
