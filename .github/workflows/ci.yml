@@ -6,6 +6,7 @@ env:
   GODOT_EXECUTABLE_URL: https://github.com/godotengine/godot/releases/download/3.5.1-stable/Godot_v3.5.1-stable_linux_headless.64.zip
   GODOT_TEMPLATES_URL: https://github.com/godotengine/godot/releases/download/3.5.1-stable/Godot_v3.5.1-stable_export_templates.tpz
   EXPORT_NAME: GodotBuildExample-HTML5
+  EXPORT_PATH: build/web
 
 jobs:
   export-html5:
@@ -23,7 +24,7 @@ jobs:
           godot_executable_download_url: ${{ env.GODOT_EXECUTABLE_URL }}
           godot_export_templates_download_url: ${{ env.GODOT_TEMPLATES_URL }}
           relative_project_path: ./
-          use_preset_export_path: true
+          relative_export_path: ${{ secrets.EXPORT_PATH }}
       # Upload to itch.io
       - uses: manleydev/butler-publish-itchio-action@master
         env:
@@ -31,9 +32,9 @@ jobs:
           CHANNEL: html5
           ITCH_GAME: ${{ secrets.ITCH_GAME }}
           ITCH_USER: ${{ secrets.ITCH_USER }}
-          PACKAGE: build/web
+          PACKAGE: ${{ secrets.EXPORT_PATH }}
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: web
-          path: build/web
+          path: ${{ secrets.EXPORT_PATH }}
