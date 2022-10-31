@@ -1,10 +1,6 @@
 name: "Export to itch.io"
 on: [workflow_dispatch]
 
-env:
-  GODOT_EXECUTABLE_URL: https://github.com/godotengine/godot/releases/download/3.5.1-stable/Godot_v3.5.1-stable_linux_headless.64.zip
-  GODOT_EXPORT_TEMPLATE_URL: https://github.com/godotengine/godot/releases/download/3.5.1-stable/Godot_v3.5.1-stable_export_templates.tpz
-
 jobs:
   export-html5:
     runs-on: ubuntu-22.04
@@ -17,8 +13,8 @@ jobs:
       - name: Web Build
         uses: firebelley/godot-export@v4.2.0
         with:
-          godot_executable_download_url: $GODOT_EXECUTABLE_URL
-          godot_export_templates_download_url: $GODOT_EXPORT_TEMPLATE_URL
+          godot_executable_download_url: https://github.com/godotengine/godot/releases/download/3.5.1-stable/Godot_v3.5.1-stable_linux_headless.64.zip
+          godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/3.5.1-stable/Godot_v3.5.1-stable_export_templates.tpz
           relative_project_path: ./
           archive_output: true
       - name: Upload Artifact
