@@ -7,7 +7,7 @@
 [sub_resource type="CubeMesh" id=4]
 
 [sub_resource type="SpatialMaterial" id=6]
-albedo_color = Color( 0.458824, 0.682353, 0.901961, 1 )
+albedo_color = Color( 0.0156863, 0.517647, 0.819608, 1 )
 
 [node name="Player" type="KinematicBody"]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
