@@ -9,7 +9,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Add export presets
         run: |
-          printf "${{ secrets.EXPORT_PRESETS }}" > export_presets.cfg
+          echo "${{ secrets.EXPORT_PRESETS }}" | base64 --decode > export_presets.cfg
       - name: Web Build
         uses: firebelley/godot-export@v4.2.0
         with:
