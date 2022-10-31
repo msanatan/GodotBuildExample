@@ -1,6 +1,10 @@
 name: "Export to itch.io"
 on: [workflow_dispatch]
 
+env:
+  # This should match what's in the export_presets.cfg
+  EXPORT_NAME: GodotBuildExample-HTML5
+
 jobs:
   export-html5:
     runs-on: ubuntu-22.04
@@ -22,7 +26,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: web
-          path: ${{ steps.build.outputs.archive_directory }}
+          path: ${{ steps.build.outputs.archive_directory }}/${EXPORT_NAME}.zip
       # Upload to itch.io
       - uses: manleydev/butler-publish-itchio-action@master
         env:
@@ -30,4 +34,4 @@ jobs:
           CHANNEL: html5
           ITCH_GAME: ${{ secrets.ITCH_GAME }}
           ITCH_USER: ${{ secrets.ITCH_USER }}
-          PACKAGE: ${{ steps.build.outputs.archive_directory }}
+          PACKAGE: ${{ steps.build.outputs.archive_directory }}/${EXPORT_NAME}.zip
