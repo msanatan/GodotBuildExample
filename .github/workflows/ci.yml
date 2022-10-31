@@ -11,7 +11,7 @@ jobs:
       image: barichello/godot-ci:3.5.1
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Setup
         run: |
           mkdir -v -p ~/.local/share/godot/templates
@@ -23,7 +23,7 @@ jobs:
           godot -v --export "HTML5" build/web/index.html
       # Upload artifact as a safety measure in case sh** hits the fan
       - name: Upload Artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: web
           path: build/web
