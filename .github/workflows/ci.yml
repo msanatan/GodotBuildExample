@@ -34,4 +34,4 @@ jobs:
           CHANNEL: html5
           ITCH_GAME: ${{ secrets.ITCH_GAME }}
           ITCH_USER: ${{ secrets.ITCH_USER }}
-          PACKAGE: ${{ steps.build.outputs.archive_directory }}/${{ env.EXPORT_NAME }}.zip
+          PACKAGE: ${{ steps.build.outputs.build_directory }}
