@@ -23,6 +23,7 @@ jobs:
           godot_executable_download_url: ${{ env.GODOT_EXECUTABLE_URL }}
           godot_export_templates_download_url: ${{ env.GODOT_TEMPLATES_URL }}
           relative_project_path: ./
+          use_preset_export_path: true
       # Upload to itch.io
       - uses: manleydev/butler-publish-itchio-action@master
         env:
@@ -30,9 +31,9 @@ jobs:
           CHANNEL: html5
           ITCH_GAME: ${{ secrets.ITCH_GAME }}
           ITCH_USER: ${{ secrets.ITCH_USER }}
-          PACKAGE: ${{ steps.build.outputs.build_directory }}/${{ env.EXPORT_NAME }}/
+          PACKAGE: ${{ steps.build.outputs.build_directory }}
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: web
-          path: ${{ steps.build.outputs.build_directory }}/${{ env.EXPORT_NAME }}
+          path: ${{ steps.build.outputs.build_directory }}
