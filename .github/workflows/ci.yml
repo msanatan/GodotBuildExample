@@ -11,10 +11,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup
+      - name: Add export presets
         run: |
-          mkdir -v -p ~/.local/share/godot/templates
-          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
           printf "${{ secrets.EXPORT_PRESETS }}" > export_presets.cfg
       - name: Web Build
         uses: firebelley/godot-export@v4.2.0
