@@ -11,6 +11,7 @@ jobs:
         run: |
           echo "${{ secrets.EXPORT_PRESETS }}" | base64 --decode > export_presets.cfg
       - name: Web Build
+        id: build
         uses: firebelley/godot-export@v4.2.0
         with:
           godot_executable_download_url: https://github.com/godotengine/godot/releases/download/3.5.1-stable/Godot_v3.5.1-stable_linux_headless.64.zip
@@ -21,7 +22,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: web
-          path: build/web
+          path: ${{ needs.build.archive_directory }}
       # Upload to itch.io
       - uses: manleydev/butler-publish-itchio-action@master
         env:
@@ -29,4 +30,4 @@ jobs:
           CHANNEL: html5
           ITCH_GAME: ${{ secrets.ITCH_GAME }}
           ITCH_USER: ${{ secrets.ITCH_USER }}
-          PACKAGE: build/web
+          PACKAGE: ${{ needs.build.archive_directory }}
