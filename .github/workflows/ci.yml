@@ -3,7 +3,6 @@ on: [workflow_dispatch]
 
 env:
   GODOT_VERSION: 3.5.1
-  EXPORT_NAME: GodotBuildExample
 
 jobs:
   export-html5:
@@ -20,8 +19,7 @@ jobs:
       - name: Web Build
         run: |
           mkdir -v -p build/web
-          cd $EXPORT_NAME
-          godot -v --export "HTML5" ../build/web/index.html
+          godot -v --export "HTML5" build/web/index.html
       # Upload artifact as a safety measure in case sh** hits the fan
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
