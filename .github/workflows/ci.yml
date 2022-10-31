@@ -22,7 +22,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: web
-          path: ${{ needs.build.archive_directory }}
+          path: ${{ needs.build.outputs.archive_directory }}
       # Upload to itch.io
       - uses: manleydev/butler-publish-itchio-action@master
         env:
@@ -30,4 +30,4 @@ jobs:
           CHANNEL: html5
           ITCH_GAME: ${{ secrets.ITCH_GAME }}
           ITCH_USER: ${{ secrets.ITCH_USER }}
-          PACKAGE: ${{ needs.build.archive_directory }}
+          PACKAGE: ${{ needs.build.outputs.archive_directory }}
