@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cbir0s6udvfvn"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1"]
+[ext_resource type="Script" path="res://player.gd" id="1_1wxby"]
 
 [sub_resource type="BoxShape3D" id="3"]
 
@@ -11,7 +11,7 @@ albedo_color = Color(0.121569, 1, 1, 1)
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-script = ExtResource("1")
+script = ExtResource("1_1wxby")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("3")
